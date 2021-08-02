@@ -66,5 +66,5 @@ CRUD operations through built in CRUD methods and derived Queries. Data was push
 using JSON. Additionally, as mentioned earlier, the backend was a MySql relational database schema.
 
 <p>
-<img src="./tables.png" alt="DB Tables" width="200" height="200" align="center"/>
+<img src="tables.jpg" alt="DB Tables" width="200" height="200" align="center"/>
 </p>
