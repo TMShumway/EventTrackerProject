@@ -53,11 +53,11 @@ CREATE TABLE IF NOT EXISTS `assignment` (
 ENGINE = InnoDB;
 
 SET SQL_MODE = '';
-DROP USER IF EXISTS assignmentuser;
+DROP USER IF EXISTS auser@localhost;
 SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
-CREATE USER 'assignmentuser' IDENTIFIED BY 'assignmentuser';
+CREATE USER 'auser'@'localhost' IDENTIFIED BY 'auser';
 
-GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'assignmentuser';
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'auser'@'localhost';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -69,6 +69,8 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `assignmentdb`;
 INSERT INTO `course` (`id`, `name`, `is_complete`, `start_date`, `end_date`, `course_code`) VALUES (1, 'Discrete Mathematics', 0, '2021-07-06', '2021-07-30', 'MATH 2300');
+INSERT INTO `course` (`id`, `name`, `is_complete`, `start_date`, `end_date`, `course_code`) VALUES (2, 'Elementary Physics I', 0, '2021-07-01', '2021-08-14', 'PHYS 2400');
+INSERT INTO `course` (`id`, `name`, `is_complete`, `start_date`, `end_date`, `course_code`) VALUES (3, 'Intro to Computer Science', 1, '2020-06-05', '2020-08-14', 'CS1301');
 
 COMMIT;
 
@@ -78,7 +80,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `assignmentdb`;
-INSERT INTO `assignment` (`id`, `name`, `due_date`, `details`, `is_complete`, `course_id`) VALUES (1, 'Chapter 1 End-of-Chapter Exercises', '2021-07-08 23:59:59', 'Do problems 2-20; Evens only.', 0, 1);
+INSERT INTO `assignment` (`id`, `name`, `due_date`, `details`, `is_complete`, `course_id`) VALUES (1, 'Chapter 1 End-of-Chapter Exercises', '2021-07-08 23:59:59', 'Do problems 2-20; Evens only.', 1, 1);
+INSERT INTO `assignment` (`id`, `name`, `due_date`, `details`, `is_complete`, `course_id`) VALUES (2, 'Chapter 2 End-of-Chapter Exercises', '2021-07-12 23:59:59', 'Do problems 1-21; Odds only.', 0, 1);
+INSERT INTO `assignment` (`id`, `name`, `due_date`, `details`, `is_complete`, `course_id`) VALUES (3, 'Chapter 3 End-of-Chapter Exercises', '2021-07-16 23:59:59', 'Do problems 2-20; Evens only.', 0, 1);
 
 COMMIT;
 
