@@ -53,7 +53,6 @@ You can access the RESTful endpoints to retrieve data from the MySQL database. E
 | `Assignment`             | `PUT api/courses/{id}/assignments/{id}`          | Update an assignment                        |
 | `Void`                   | `DELETE api/courses/{id}/assignments/{id}`       | Delete an assignment for a course by id     |
 | `List<Assignment>`       | `GET api/courses/{id}/assignments/{isComplete}`  | Get all completed assignments for a course  |
-|---------------------------------------------------------------------------------------------------------------------------|
 
 ### Lessons Learned
 
@@ -66,4 +65,6 @@ With Spring Boot, I used Spring REST annotations. I also used Spring Data JPA to
 CRUD operations through built in CRUD methods and derived Queries. Data was pushed between endpoints and the information provider
 using JSON. Additionally, as mentioned earlier, the backend was a MySql relational database schema.
 
-![DB Tables](/tables.png)
+<p>
+<img src="tables.png" alt ="git" width="200" height="200" align="center"/>
+</p>
