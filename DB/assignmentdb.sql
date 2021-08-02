@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `assignmentdb` DEFAULT CHARACTER SET utf8 ;
 USE `assignmentdb` ;
 
 -- -----------------------------------------------------
--- Table `assignment_class`
+-- Table `course`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `assignment_class` ;
+DROP TABLE IF EXISTS `course` ;
 
-CREATE TABLE IF NOT EXISTS `assignment_class` (
+CREATE TABLE IF NOT EXISTS `course` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL DEFAULT 'CLASS NAME',
   `is_complete` TINYINT NULL,
@@ -42,12 +42,12 @@ CREATE TABLE IF NOT EXISTS `assignment` (
   `due_date` DATETIME NULL,
   `details` VARCHAR(500) NULL,
   `is_complete` TINYINT NULL,
-  `assignment_class_id` INT NOT NULL,
+  `course_id` INT NOT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_assignment_assignment_class_idx` (`assignment_class_id` ASC),
+  INDEX `fk_assignment_assignment_class_idx` (`course_id` ASC),
   CONSTRAINT `fk_assignment_assignment_class`
-    FOREIGN KEY (`assignment_class_id`)
-    REFERENCES `assignment_class` (`id`)
+    FOREIGN KEY (`course_id`)
+    REFERENCES `course` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -64,11 +64,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `assignment_class`
+-- Data for table `course`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `assignmentdb`;
-INSERT INTO `assignment_class` (`id`, `name`, `is_complete`, `start_date`, `end_date`, `course_code`) VALUES (1, 'Discrete Mathematics', 0, '2021-07-06', '2021-07-30', 'MATH 2300');
+INSERT INTO `course` (`id`, `name`, `is_complete`, `start_date`, `end_date`, `course_code`) VALUES (1, 'Discrete Mathematics', 0, '2021-07-06', '2021-07-30', 'MATH 2300');
 
 COMMIT;
 
@@ -78,7 +78,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `assignmentdb`;
-INSERT INTO `assignment` (`id`, `name`, `due_date`, `details`, `is_complete`, `assignment_class_id`) VALUES (1, 'Chapter 1 End-of-Chapter Exercises', '2021-07-08 23:59:59', 'Do problems 2-20; Evens only.', 0, 1);
+INSERT INTO `assignment` (`id`, `name`, `due_date`, `details`, `is_complete`, `course_id`) VALUES (1, 'Chapter 1 End-of-Chapter Exercises', '2021-07-08 23:59:59', 'Do problems 2-20; Evens only.', 0, 1);
 
 COMMIT;
 

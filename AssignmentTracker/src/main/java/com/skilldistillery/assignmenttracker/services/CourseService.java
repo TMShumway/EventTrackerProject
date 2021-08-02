@@ -2,9 +2,16 @@ package com.skilldistillery.assignmenttracker.services;
 
 import java.util.List;
 
-import com.skilldistillery.assignmenttracker.entities.AssignmentClass;
+import org.springframework.stereotype.Service;
 
-public interface AssignmentClassService {
+import com.skilldistillery.assignmenttracker.entities.Course;
 
-	List<AssignmentClass> allClasses();
+public interface CourseService {
+
+	List<Course> allCourses();
+	Course findById(int courseId);
+	Course createCourse(Course course);
+	Course updateCourse(Course course);
+	boolean deleteCourse(int courseId);
+	List<Course> sortByCompletion(boolean isComplete);
 }

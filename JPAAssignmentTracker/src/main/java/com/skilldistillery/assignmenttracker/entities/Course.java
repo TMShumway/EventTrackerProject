@@ -1,20 +1,43 @@
 package com.skilldistillery.assignmenttracker.entities;
 
+import java.time.LocalDate;
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
-public class AssignmentClass {
+public class Course {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
 	private String name;
+
+	@Column(name = "is_complete")
+	private boolean isComplete;
 	
-	public AssignmentClass() {}
+	@Column(name = "start_date")
+	private LocalDate startDate;
+	
+	@Column(name = "end_date")
+	private LocalDate endDate;
+	
+	@Column(name = "course_code")
+	private String courseCode;
+	
+	@JsonIgnoreProperties("course")
+	@OneToMany(mappedBy = "course")
+	private List<Assignment> assignments;
+	
+	public Course() {}
 
 	public int getId() {
 		return id;
@@ -32,9 +55,50 @@ public class AssignmentClass {
 		this.name = name;
 	}
 
+	public boolean getIsComplete() {
+		return isComplete;
+	}
+
+	public void setIsComplete(boolean isComplete) {
+		this.isComplete = isComplete;
+	}
+
+	public LocalDate getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
+
+	public LocalDate getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
+	}
+
+	public String getCourseCode() {
+		return courseCode;
+	}
+
+	public void setCourseCode(String courseCode) {
+		this.courseCode = courseCode;
+	}
+
+	public List<Assignment> getAssignments() {
+		return assignments;
+	}
+
+	public void setAssignments(List<Assignment> assignments) {
+		this.assignments = assignments;
+	}
+
 	@Override
 	public String toString() {
-		return "AssignmentClass [id=" + id + ", name=" + name + "]";
+		return "Course [id=" + id + ", name=" + name + ", isComplete=" + isComplete + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", courseCode=" + courseCode + ", assignments=" + assignments + "]";
 	}
 
 	@Override
@@ -53,11 +117,9 @@ public class AssignmentClass {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		AssignmentClass other = (AssignmentClass) obj;
+		Course other = (Course) obj;
 		if (id != other.id)
 			return false;
 		return true;
 	}
-	
-	
 }

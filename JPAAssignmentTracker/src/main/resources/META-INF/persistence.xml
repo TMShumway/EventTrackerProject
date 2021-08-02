@@ -6,7 +6,8 @@
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 	
 		<!-- list entities here-->
-		<class>com.skilldistillery.assignmenttracker.AssignmentClass</class>
+		<class>com.skilldistillery.assignmenttracker.entities.Course</class>
+		<class>com.skilldistillery.assignmenttracker.entities.Assignment</class>
 		<!-- end listing of entities here-->
 		
 	
