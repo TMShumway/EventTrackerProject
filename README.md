@@ -8,7 +8,7 @@ when finished, will be an event tracker for assignments for a college class, or 
 of a multi-weekend project and is intended to fulfill the contract between the information provider (a MySQL database schema),
 and the information user (the user via endpoints represented through a web front end).  
 
-##Technologies Used
+## Technologies Used
 
 * Java
 * Java Persistence API
