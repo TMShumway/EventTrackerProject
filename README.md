@@ -65,6 +65,7 @@ With Spring Boot, I used Spring REST annotations. I also used Spring Data JPA to
 CRUD operations through built in CRUD methods and derived Queries. Data was pushed between endpoints and the information provider
 using JSON. Additionally, as mentioned earlier, the backend was a MySql relational database schema.
 
+### Relational DB Tables
 <p>
 <img src="tables.jpg" alt="DB Tables" align="center"/>
 </p>
