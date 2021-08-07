@@ -40,6 +40,8 @@ public class CourseController {
 		Course course = courseService.findById(courseId);
 		if(course == null) {
 			res.setStatus(404);
+		} else {
+			res.setStatus(201);
 		}
 		return course;
 	}

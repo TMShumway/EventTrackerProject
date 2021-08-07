@@ -1,0 +1,11 @@
+body {
+    background-color: cornflowerblue;
+}
+
+.card {
+    margin-bottom: 20px;
+}
+
+h1, h3 {
+    text-align: center;
+}

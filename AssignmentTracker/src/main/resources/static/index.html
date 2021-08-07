@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- Required meta tags -->
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+<script type="text/javascript" src="js/script.js"></script>
+<link rel="stylesheet" href="styles.css">
+<title>Assignment Tracker</title>
+</head>
+<body>
+	<h1>Track your assignments</h1>
+	<hr>
+	<button name="goHome" id="homeButton">Home</button>
+
+	<div id="allCoursesView">
+	<div class="row" style="text-align: center;">
+		<div class="col-md-2">
+			<!-- CONTENT ON LEFT SIDE -->
+		</div>
+		<div class="col-md-8" id="courseListDiv">
+			<!-- Course Cards Here -->
+		</div>
+		<div class="col-md-2">
+			<!-- CONTENT ON RIGHT SIDE -->
+		</div>
+	</div>
+	
+	<div class="row hideCourseForms" style="text-align: center;">
+		<div class="col-md-2">
+			<!-- CONTENT ON LEFT SIDE -->
+		</div>
+		<div class="col-md-4">
+			<div id="editCourse">
+				<div class="card">
+					<div class="card-body">
+						<form name="updateCourseForm" id="updateCourseForm">
+							<h3>Update Course</h3>
+							<div class="form-group">
+								<input type="number" class="form-control" id="id" name="id" hidden>
+								<label for="name">Name</label>
+								<input type="text" class="form-control" id="name" name="name" required>
+							</div>
+							<div class="form-group">
+								<label for="courseCode">Course Code</label>
+								<input type="text" class="form-control" id="courseCode" name="courseCode" required>
+							</div>
+							<div class="form-group">
+								<label for="startDate" class="form-label">Start Date</label>
+								<input type="date" class="form-control" id="startDate" name="startDate" required>
+							  </div>
+							  <div class="form-group">
+								<label for="endDate" class="form-label">End Date</label>
+								<input type="date" class="form-control" id="endDate" name="endDate" required>
+							  </div>  
+							<div class="form-group">
+								<label for="isComplete">Completion Status</label>
+								<select class="form-control" id="isComplete" name="isComplete" required>
+									<option>false</option>
+									<option>true</option>
+								</select>
+							</div>
+							<button name="updateCourse">Update</button>
+				  		</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div id="editAssignment">
+				<div class="card">
+					<div class="card-body">
+						<form name="createCourseForm" id="createCourseForm">
+							<h3>Create Course</h3>
+							<div class="form-group">
+								<label for="name">Name</label>
+								<input type="text" class="form-control" id="name" name="name" required>
+							</div>
+							<div class="form-group">
+								<label for="courseCode">Course Code</label>
+								<input type="text" class="form-control" id="courseCode" name="courseCode" required>
+							</div>
+							<div class="form-group">
+								<label for="startDate" class="form-label">Start Date</label>
+								<input type="date" class="form-control" id="startDate" name="startDate" required>
+							  </div>
+							  <div class="form-group">
+								<label for="endDate" class="form-label">End Date</label>
+								<input type="date" class="form-control" id="endDate" name="endDate" required>
+							  </div>  
+							<div class="form-group">
+								<label for="isComplete">Completion Status</label>
+								<select class="form-control" id="isComplete" name="isComplete" required>
+									<option>false</option>
+									<option>true</option>
+								</select>
+							</div>
+							<button name="createCourse">Create</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-2">
+			<!-- CONTENT ON RIGHT SIDE -->
+		</div>
+	</div>
+	</div>
+
+	<div id="singleCourseView" class=".d-none">
+
+		<div id="allCoursesView">
+			<div class="row" style="text-align: center;">
+				<div class="col-md-2">
+					<!-- CONTENT ON LEFT SIDE -->
+				</div>
+				<div class="col-md-8" id="assignmentListDiv">
+					<!-- Course Cards Here -->
+				</div>
+				<div class="col-md-2">
+					<!-- CONTENT ON RIGHT SIDE -->
+				</div>
+		</div>
+
+		<div class="row hideAssignmentForms" style="text-align: center;">
+			<div class="col-md-2">
+			<!-- CONTENT ON LEFT SIDE -->
+			</div>
+			<div class="col-md-4">
+			<div id="createCourse">
+				<div class="card">
+				<div class="card-body">
+					<form name="updateAssignmentForm" id="updateAssignmentForm">
+						<h3>Update Assignment</h3>
+						<div class="form-group">
+							<input type="number" class="form-control" id="courseId" name="courseId" hidden>
+							<input type="number" class="form-control" id="id" name="id" hidden>
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" name="name" required>
+						</div>
+						<div class="form-group">
+							<label for="details">Details</label>
+							<textarea class="form-control" id="details" rows="3" name="details" required></textarea>
+						</div>
+							<div class="form-group">
+							<label for="dueDate" class="form-label">Due Date</label>
+							<input type="datetime-local" class="form-control" id="dueDate" name="dueDate" required>
+							</div>  
+						<div class="form-group">
+							<label for="isComplete">Completion Status</label>
+							<select class="form-control" id="isComplete" name="isComplete" required>
+							<option>false</option>
+							<option>true</option>
+							</select>
+						</div>
+						<button name="updateAssignment">Update</button>
+					</form>
+				</div>
+					</div>
+			</div>
+			</div>
+			<div class="col-md-4">
+			<div id="createAssignment">
+				<div class="card">
+				<div class="card-body">
+					<form name="createAssignmentForm" id="createAssignmentForm">
+						<h3>Create Assignment</h3>
+						<div class="form-group">
+							<input type="number" class="form-control" id="courseId" name="courseId" hidden>
+							<label for="name">Name</label>
+							<input type="text" class="form-control" id="name" name="name" required>
+						</div>
+						<div class="form-group">
+							<label for="details">Details</label>
+							<textarea class="form-control" id="details" rows="3" name="details" required></textarea>
+						</div>
+							<div class="form-group">
+							<label for="endDate" class="form-label">Due Date</label>
+							<input type="datetime-local" class="form-control" id="dueDate" name="dueDate" required>
+							</div>  
+						<div class="form-group">
+							<label for="isComplete">Completion Status</label>
+							<select class="form-control" id="isComplete" name="isComplete" required>
+							<option>false</option>
+							<option>true</option>
+							</select>
+						</div>
+						<button name="createAssignment">Create</button>
+					</form>
+					</div>
+				</div>
+			</div>
+			</div>
+			<div class="col-md-2">
+			<!-- CONTENT ON RIGHT SIDE -->
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+</body>
+</html>

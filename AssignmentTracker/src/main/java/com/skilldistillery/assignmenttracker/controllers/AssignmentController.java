@@ -31,8 +31,14 @@ public class AssignmentController {
 	}
 	
 	@GetMapping("courses/{courseId}/assignments")
-	public List<Assignment> listAssignmentsByCourseId(@PathVariable int courseId){
-		return assignmentService.findByCourseId(courseId);
+	public List<Assignment> listAssignmentsByCourseId(@PathVariable int courseId, HttpServletResponse res){
+		List<Assignment> assignments = assignmentService.findByCourseId(courseId);
+		if(assignments.size() > 0) {
+			res.setStatus(200);
+		} else {
+			res.setStatus(404);
+		}
+		return assignments;
 	}
 	
 	@GetMapping("courses/{courseId}/assignments/completion/{isComplete}")
