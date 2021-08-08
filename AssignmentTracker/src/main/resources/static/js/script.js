@@ -107,6 +107,8 @@ function loadCourses(){
 }
 
 function displayCourses(courses){
+	calculateCompletedAssignmentsPercent();
+
 	let courseListDiv = document.getElementById("courseListDiv");
 	courseListDiv.innerHTML = "";
 	if(courses && courses.length > 0){	
@@ -347,6 +349,8 @@ function deleteCourse(id){
 }
 
 function loadAssignmentsByCourseId(courseId){
+	calculateCompletedAssignmentsPercent();
+
 	let courseIdHiddenInput = document.getElementsByName("courseId");
 	for (const cid of courseIdHiddenInput) {
 		cid.value = courseId;
@@ -444,6 +448,34 @@ function deleteAssignment(courseId, assignmentId){
 				loadAssignmentsByCourseId(courseId);
 			} else {
 				// displayError('Error creating film: ' + xhr.status);
+			}
+		}
+	};
+	xhr.send();
+}
+
+function calculateCompletedAssignmentsPercent(){
+	let xhr = new XMLHttpRequest();
+	xhr.open("GET", "api/assignments");
+	xhr.onreadystatechange = function(){
+		if(xhr.readyState === 4){
+			if(xhr.status === 200){
+				let assignments = JSON.parse(xhr.responseText);
+				let totalAssignments = assignments.length;
+				let totalComplete = 0;
+				for (const a of assignments) {
+					if(a.isComplete === true){
+						++totalComplete;
+					}
+				}
+				let percentComplete = (totalComplete / totalAssignments) * 100;
+				console.log("HERE IT IS" + totalAssignments);
+				console.log("HERE IT IS" + totalComplete);
+				console.log("HERE IT IS" + percentComplete);
+				let completeHeader = document.getElementById("percentCompleteAssignments");
+				completeHeader.textContent = percentComplete + "% of Assignments Complete";
+			} else {
+				return 0;
 			}
 		}
 	};
