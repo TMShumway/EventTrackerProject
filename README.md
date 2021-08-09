@@ -8,9 +8,14 @@ when finished, will be an event tracker for assignments for a college class, or 
 of a multi-weekend project and is intended to fulfill the contract between the information provider (a MySQL database schema),
 and the information user (the user via endpoints represented through a web front end).  
 
+The second addition to this project incorporated a front end using JAvaScript and HTML with CSS. This allows for the information
+user to access the REST api endpoints via a GUI. All information is presented in a way to allow simple and intuitive navigation.
+
 ## Technologies Used
 
 * Java
+* JavaScript
+* Asynchronous Http Requests
 * Java Persistence API
 * REST API
 * Spring DATA JPA
@@ -23,6 +28,11 @@ and the information user (the user via endpoints represented through a web front
 
 ### Specific Technology Implementations
 
+* Asynchronous requests to Java Backend via XMLHttpRequests
+* Dynamic construction of HTML elements to update front end in real-time
+* POST, PUT, GET, and DELETE requests sent via XMLHttpRequests
+* Parse JSON responses from Backend
+* Construct JSON responses to send to backend
 * Spring REST Annotations
 * Spring DATA JPA to perform CRUD operations
   * Derived Queries
