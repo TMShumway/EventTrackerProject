@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.assignmenttracker.entities.Assignment;
 import com.skilldistillery.assignmenttracker.entities.Course;
+import com.skilldistillery.assignmenttracker.repositories.AssignmentRepository;
 import com.skilldistillery.assignmenttracker.repositories.CourseRepository;
 
 @Service
@@ -14,6 +16,9 @@ public class CourseServiceImpl implements CourseService{
 
 	@Autowired
 	private CourseRepository courseRepo;
+	
+	@Autowired
+	private AssignmentRepository assignmentRepo;
 	
 	@Override
 	public List<Course> allCourses() {
@@ -56,6 +61,12 @@ public class CourseServiceImpl implements CourseService{
 		boolean wasDeleted = false;
 		
 		if(courseRepo.existsById(courseId)) {
+			Course course = findById(courseId);
+			if(course.getAssignments() != null) {
+				for(Assignment a : course.getAssignments()) {
+					assignmentRepo.delete(a);
+				}
+			}
 			courseRepo.deleteById(courseId);
 			wasDeleted = true;
 		}
