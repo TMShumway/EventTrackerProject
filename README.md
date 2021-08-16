@@ -12,7 +12,7 @@ The second addition to this project incorporated a front end using JavaScript an
 user to access the REST api endpoints via a GUI. All information is presented in a way to allow simple and intuitive navigation.
 
 The third and final addition to this project replaced the JavaScript/HTML/CSS front end with a new front end running on the
-Angular Framework. This necessitated a switch from JavaScript to typescript.
+Angular Framework. This necessitated a switch from JavaScript to TypeScript.
 
 ## Technologies Used
 
