@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { environment } from 'src/environments/environment';
 import { Course } from '../models/course';
 
 @Injectable({
@@ -9,8 +10,8 @@ import { Course } from '../models/course';
 })
 export class CourseService {
 
-  baseUrl = 'http://localhost:8084/';
-  url = this.baseUrl + 'api/courses';
+  // baseUrl = 'http://localhost:8084/';
+  url = environment.baseUrl + 'api/courses';
 
   constructor(private http: HttpClient) { }
 
