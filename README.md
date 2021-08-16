@@ -8,13 +8,18 @@ when finished, will be an event tracker for assignments for a college class, or 
 of a multi-weekend project and is intended to fulfill the contract between the information provider (a MySQL database schema),
 and the information user (the user via endpoints represented through a web front end).  
 
-The second addition to this project incorporated a front end using JAvaScript and HTML with CSS. This allows for the information
+The second addition to this project incorporated a front end using JavaScript and HTML with CSS. This allows for the information
 user to access the REST api endpoints via a GUI. All information is presented in a way to allow simple and intuitive navigation.
+
+The third and final addition to this project replaced the JavaScript/HTML/CSS front end with a new front end running on the
+Angular Framework. This necessitated a switch from JavaScript to typescript.
 
 ## Technologies Used
 
 * Java
+* Angular
 * JavaScript
+* TypeScript
 * Asynchronous Http Requests
 * Java Persistence API
 * REST API
@@ -28,6 +33,7 @@ user to access the REST api endpoints via a GUI. All information is presented in
 
 ### Specific Technology Implementations
 
+* Used Angular Models, Components, and Services to build front end
 * Asynchronous requests to Java Backend via XMLHttpRequests
 * Dynamic construction of HTML elements to update front end in real-time
 * POST, PUT, GET, and DELETE requests sent via XMLHttpRequests

@@ -8,6 +8,7 @@ import { CourseService } from './services/course.service';
 import { AssignmentService } from './services/assignment.service';
 import { CourselistComponent } from './components/courselist/courselist.component';
 import { AssignmentlistComponent } from './components/assignmentlist/assignmentlist.component';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { AssignmentlistComponent } from './components/assignmentlist/assignmentl
   ],
   providers: [
     CourseService,
-    AssignmentService
+    AssignmentService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

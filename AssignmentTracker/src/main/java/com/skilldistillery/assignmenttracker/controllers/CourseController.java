@@ -67,6 +67,12 @@ public class CourseController {
 	@PutMapping("courses")
 	public Course updateCourse(@RequestBody Course course,
 			                       HttpServletResponse res) {
+		
+		System.out.println("****************************");
+		System.out.println("****************************");
+		System.out.println(course);
+		System.out.println("****************************");
+		System.out.println("****************************");
 		Course newCourse = null;
 		try {
 			newCourse = courseService.updateCourse(course);

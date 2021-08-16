@@ -1,4 +1,6 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Course } from 'src/app/models/course';
 import { CourseService } from 'src/app/services/course.service';
 
@@ -11,7 +13,13 @@ export class CourselistComponent implements OnInit {
 
   courses: Course[] = [];
 
-  constructor(private courseService: CourseService) { }
+  newCourse: Course = new Course();
+  newCourseView: boolean = false;
+
+  editCourse: Course = new Course();
+  editCourseView: boolean = false;
+
+  constructor(private courseService: CourseService, private datePipe: DatePipe, private router: Router) { }
 
   ngOnInit(): void {
     this.loadCourses();
@@ -27,4 +35,55 @@ export class CourselistComponent implements OnInit {
       }
     );
   }
+
+  addCourse(): void {
+    this.courseService.create(this.newCourse).subscribe(
+      data => {
+        this.goHome();
+        this.loadCourses(); },
+
+      err => { console.error('Observer error: ' + err) }
+    );
+  }
+
+  deleteCourse(id: number){
+    this.courseService.destroy(id).subscribe(
+      data => {
+        this.goHome();
+        this.loadCourses(); },
+
+      err => { console.error('Observer error: ' + err) }
+    );
+  }
+
+  updateCourse(){
+    this.courseService.update(this.editCourse).subscribe(
+      data => {
+        this.goHome();
+        this.loadCourses(); },
+
+      err => { console.error('Observer error: ' + err) }
+    );
+  }
+
+  viewEdit(course: Course){
+    this.editCourse = {...course};
+    this.editCourseView = true;
+  }
+
+  viewNew(){
+    this.newCourseView = true;
+  }
+
+  goHome(){
+    this.editCourse = new Course();
+    this.newCourse = new Course();
+    this.newCourseView = false;
+    this.editCourseView = false;
+  }
+
+  routeToAssignments(id: number, name: string){
+    this.router.navigateByUrl("courses/" + id + "/" + name + "/assignments");
+  }
+
 }

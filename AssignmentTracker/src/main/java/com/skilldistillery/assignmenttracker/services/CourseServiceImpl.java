@@ -43,17 +43,17 @@ public class CourseServiceImpl implements CourseService{
 
 	@Override
 	public Course updateCourse(Course course) {
-//		Optional<Course> courseOptional = courseRepo.findById(course.getId());
-//		if(courseOptional.isPresent()) {
-//			Course managedCourse = courseOptional.get();
-//			managedCourse.setName(course.getName());
-//			managedCourse.setIsComplete(course.getIsComplete());
-//			managedCourse.setStartDate(course.getStartDate());
-//			managedCourse.setEndDate(course.getEndDate());
-//			managedCourse.setCourseCode(course.getCourseCode());
-//			courseRepo.saveAndFlush(managedCourse);
-//		}
-		return courseRepo.saveAndFlush(course);
+		Optional<Course> courseOptional = courseRepo.findById(course.getId());
+		if(courseOptional.isPresent()) {
+			Course managedCourse = courseOptional.get();
+			managedCourse.setName(course.getName());
+			managedCourse.setIsComplete(course.getIsComplete());
+			managedCourse.setStartDate(course.getStartDate());
+			managedCourse.setEndDate(course.getEndDate());
+			managedCourse.setCourseCode(course.getCourseCode());
+			return courseRepo.saveAndFlush(managedCourse);
+		}
+		return null;
 	}
 
 	@Override
